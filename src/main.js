@@ -10,7 +10,7 @@ import vuetify from './plugins/vuetify';
 Vue.use(VueSimpleAlert);
 Vue.use(VueLoading,{text:'Please wait..'});
 Vue.use(VueRouter);
-Vue.use(Toasted,{duration:2000});
+Vue.use(Toasted,{duration:4000});
 
 
 Vue.config.productionTip = false

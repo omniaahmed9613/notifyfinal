@@ -293,7 +293,7 @@
     <input type="password" class="form-control" v-model="confirm_password"  style="width:50%;" id="p3" required placeholder="Confirm password">
   </div>
     <div class="d-flex justify-content-center">
- <v-btn type="submit" class="white--text " style="width:35%;" color="#164e87" >create free account</v-btn>
+ <v-btn type="submit" class="white--text " style="width:35%;" color="#164e87" :loading="loading" >create free account</v-btn>
     </div>
     <div class="d-flex justify-content-center mt-2">
        <v-btn type="submit" class="
@@ -320,6 +320,7 @@ export default {
                 password:null,
             },
             confirm_password:null,
+            loading:false
         }
     },
     methods:{
@@ -327,13 +328,13 @@ export default {
         
         if(this.confirm_password!=this.RegisterInfo.password) return this.$toasted.error("Passwords don't match");
         if((/^(?=.*?[A-Z])(?=.*?[a-z]).{5,}$/.test(this.RegisterInfo.password))==false) return this.$toasted.error("Password must have at least one upper case, one lower case and must be at least 5 characters");
-        this.$loading(true)
+        this.loading=true
         this.$store.commit('setEmail',this.RegisterInfo.email);
         api.register(this.RegisterInfo).then(()=>{
-            this.$loading(false);
+            this.loading=false
             this.$router.push('/confirmation');
 
-        }).catch((err)=>{this.$loading(false);this.$toasted.error(err.response.data)});
+        }).catch((err)=>{this.loading=false;this.$toasted.error(err.response.data)});
        
     },
     }}

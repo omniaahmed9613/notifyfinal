@@ -23,7 +23,7 @@
       <input type="password" v-model="loginInfo.password" class="form-control " style="width:50%" id="p1" required placeholder="Password" />
       </div>
       <div class="d-flex justify-content-center">
-    <v-btn type="submit" class="white--text " style="width:30%;" color="#164e87">Log In</v-btn>
+    <v-btn type="submit" class="white--text " style="width:30%;" color="#164e87" :loading="loading">Log In</v-btn>
       </div>
        </form>
       <p class="d-flex justify-content-center mt-5 mb-0" id="info1">
@@ -51,27 +51,29 @@ export default {
       loginInfo: {
         email: null,
         password: null
-      }
+      },
+      loading:false
     };
   },
   methods: {
     login() {
-      if (this.loginInfo.password.length < 5)
-        return this.$toasted.error("Password must be atleast 5 characters");
-      if (/[A-Z]/.test(this.loginInfo.password) == false)
-        return this.$toasted.error(
-          "Password must contain atleast one uppercase letter"
-        );
-      this.$loading(true);
+       this.loading=true
+      // if (this.loginInfo.password.length < 5)
+      //   return this.$toasted.error("Password must be atleast 5 characters");
+      // if (/[A-Z]/.test(this.loginInfo.password) == false)
+      //   return this.$toasted.error(
+      //     "Password must contain atleast one uppercase letter"
+      //   );
+     
       api
         .login(this.loginInfo)
         .then(response => {
-          this.$loading(false);
+          this.loading=false
           this.$store.commit("assignUser", response.data);
           this.$router.push("/home");
         })
         .catch(err => {
-          this.$loading(false);
+          this.loading=false
           this.$toasted.error(err.response.data);
         });
     },
