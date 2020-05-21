@@ -2,6 +2,7 @@ import axios from "axios";
 // const URL = "http://localhost:5000";
 axios.interceptors.request.use(
     function(config){
+      if(config.url=='http://ip-api.com/json') return config
         config.withCredentials=true;
         return config;
     },
@@ -10,6 +11,9 @@ axios.interceptors.request.use(
     }
 )
 export default {
+  getlocation(){
+    return axios.get('http://ip-api.com/json');
+  },
   register(user) {
     return axios.post(`account/register`, user);
   },

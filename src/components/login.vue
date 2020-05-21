@@ -58,13 +58,7 @@ export default {
   methods: {
     login() {
        this.loading=true
-      // if (this.loginInfo.password.length < 5)
-      //   return this.$toasted.error("Password must be atleast 5 characters");
-      // if (/[A-Z]/.test(this.loginInfo.password) == false)
-      //   return this.$toasted.error(
-      //     "Password must contain atleast one uppercase letter"
-      //   );
-     
+
       api
         .login(this.loginInfo)
         .then(response => {
@@ -96,10 +90,7 @@ export default {
     }
   },
 
-  created() {
-    api.deletetoken();
-    
-  }
+ 
 };
 </script>
 

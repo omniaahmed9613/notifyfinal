@@ -7,6 +7,9 @@ import Toasted from 'vue-toasted';
 import VueSimpleAlert from "vue-simple-alert";
 import store from './vuex'
 import vuetify from './plugins/vuetify';
+import CountryFlag from 'vue-country-flag'
+ 
+Vue.component('country-flag', CountryFlag)
 Vue.use(VueSimpleAlert);
 Vue.use(VueLoading,{text:'Please wait..'});
 Vue.use(VueRouter);

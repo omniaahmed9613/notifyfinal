@@ -1,5 +1,5 @@
 <template>
- <div class="container-fluid text-center" style="height:100%" id="info">
+ <div class="container-fluid text-center" style="height:100%" id="info" v-if="this.$store.state.newEmail">
     <img src="../logo/white_notify.png" alt="" class="mx-auto d-block pt-5">
 <div class="row">
   <div class="col-sm-4"></div>
