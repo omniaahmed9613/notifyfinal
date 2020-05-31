@@ -21,16 +21,13 @@ const beforeEnterCheck = (to, from, next) => {
     });
 };
 const beforeEnterLogin = async(to, from, next) => {
-  if(sessionStorage.getItem('user-info')===null){
-    console.log(123)
-    await api.deletetoken();
-  }
   api
     .checktoken()
     .then(() => {
       next("/home");
     })
     .catch(() => {
+      localStorage.removeItem('user-info');
       next();
     });
 };

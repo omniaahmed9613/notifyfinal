@@ -1,6 +1,6 @@
 <template>
-<div class="container-fluid" style="height:100%;background-color:#164e87">
-  <img src="../logo/white_notify.png" alt="" class="mx-auto d-block pt-5">
+<div class="container-fluid" style="height:100%" id="test">
+   <img src="../logo/logotexttt.png" alt="" id="text" class="mx-auto d-block pt-5">
   <h2 class="text-center mt-4 white--text">Sign up for free and experience Notify today</h2>
   <div class="row pt-5">
     <div class="col-sm-4"></div>
@@ -345,6 +345,19 @@ export default {
   background-color: #fff;
   border: 1px solid #164e87;
   border-radius: 50px;
+}
+
+#text{
+position: relative;
+margin-bottom: -4%;
+
+
+}
+#test{
+  background-image: url('../logo/backbanner.png');
+  background-size: cover;
+  background-repeat: round;
+
 }
 label{
   color: #164e87;

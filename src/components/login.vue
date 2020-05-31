@@ -104,10 +104,15 @@ export default {
   background-image: url('../logo/backbanner.png');
   background-size: cover;
   background-repeat: round;
-
-  
-  
 }
+
+#text{
+position: relative;
+/* margin-bottom: %; */
+
+
+}
+
 #info1{
     background: rgba(211, 211, 211, 0.897);
 }

@@ -3,7 +3,7 @@ import Vue from "vue";
 import VuexPersist from "vuex-persist";
 const vuexPersist = new VuexPersist({
   key: "user-info",
-  storage: window.sessionStorage
+  storage: window.localStorage
 });
 Vue.use(Vuex);
 const store = new Vuex.Store({

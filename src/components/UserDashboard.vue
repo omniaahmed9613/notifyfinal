@@ -45,6 +45,8 @@
         </v-avatar>
 
         <div class="nav-item dropdown mr-5">
+            <v-btn color="white" text class="nav-link" href="#">Register</v-btn>
+          <v-btn color="white" text class="nav-link" href="#">Login</v-btn>
           <v-btn
             class="nav-link dropdown-toggle mr-5"
             color="white"
@@ -733,6 +735,26 @@
             </v-btn>
        
           </div>
+          <div class="dropdown-item bg-transparent">
+            <v-btn
+              text
+              @mouseenter="dimpic"
+              @mouseleave="undimpic"
+              ripple
+              large
+              height="100px"
+              @click="ScrapeWeb"
+            >
+              <img
+                class="pl-2 pr-2"
+                src="../logo/D-Diamonds-Logo-JPEG.jpg"
+                style="mix-blend-mode: multiply;"
+                width="200"
+                name="gc"
+              />
+            </v-btn>
+       
+          </div>
           <div class="dropdown-item bg-transparent mt-1">
             <v-btn
               text
@@ -962,6 +984,7 @@ export default {
           .catch(() => {
             this.$router.push("/");
           });
+           localStorage.removeItem('user-info');
       });
     },
     changepw() {
