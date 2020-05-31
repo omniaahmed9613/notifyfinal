@@ -10,6 +10,7 @@ module.exports = {
       "^/check-token": {
         "target": "http://localhost:5000",
       },
+     
       "/home/check-token": {
         "target": "http://localhost:5000",
         pathRewrite:{
@@ -36,6 +37,12 @@ module.exports = {
         "target": "http://localhost:5000",
         pathRewrite:{
           '/home/account/changed-pass':'/account/changed-pass'
+        }
+      },
+      "/home/find": {
+        "target": "http://localhost:5000",
+        pathRewrite:{
+          '/home/find':'/find'
         }
       },
 

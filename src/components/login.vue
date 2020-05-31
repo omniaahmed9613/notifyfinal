@@ -1,7 +1,7 @@
 <template>
   <div class="container-fluid" style="height:100%" id="test">
-     <img src="../logo/white_notify.png" alt="" class="mx-auto d-block pt-5">
-    <div class="row pt-5 d-flex justify-content-center" >
+     <img src="../logo/logotexttt.png" alt="" class="mx-auto d-block pt-5 mt-5">
+    <div class="row pt-5 d-flex justify-content-center mt-5" >
       <div class="col-sm-4"></div>
       <div class="col-sm-3 mt-5 pr-0 pl-0 pb-0" id="form">
         <form @submit.prevent="login" class="pt-5" >
@@ -101,7 +101,12 @@ export default {
   background: #fff;
 }
 #test{
-  background:#164e87
+  background-image: url('../logo/backbanner.png');
+  background-size: cover;
+  background-repeat: round;
+
+  
+  
 }
 #info1{
     background: rgba(211, 211, 211, 0.897);

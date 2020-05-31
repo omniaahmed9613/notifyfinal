@@ -7,7 +7,7 @@
     <h2 class="mt-5">Almost there...</h2>
     <p>Please check your email ({{this.$store.state.newEmail}}) <br> to confirm your account.</p>
     <hr>
-    <p class="mt-5 pt-3">If {{this.$store.state.newEmail}} is not your email address,<br> please <router-link  to="/register">go back</router-link> and enter the correct one.</p>
+    <p class="mt-5 pt-3">If <b>{{this.$store.state.newEmail}} </b>is not your email address,<br> please <router-link  to="/register">go back</router-link> and enter the correct one.</p>
     <p class="mt-5 pt-3 ">If you haven't received our email in 15 minutes,<br> please check your spam folder.</p>
   </div>
   <div class="col-sm-4"></div>
