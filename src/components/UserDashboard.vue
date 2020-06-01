@@ -45,8 +45,6 @@
         </v-avatar>
 
         <div class="nav-item dropdown mr-5">
-            <v-btn color="white" text class="nav-link" href="#">Register</v-btn>
-          <v-btn color="white" text class="nav-link" href="#">Login</v-btn>
           <v-btn
             class="nav-link dropdown-toggle mr-5"
             color="white"
@@ -91,6 +89,7 @@
             </v-btn>
           </div>
         </div>
+        <span style="color:white">{{this.country}}</span>
         <country-flag :country="country" size="normal" />
       </div>
     </nav>
@@ -330,25 +329,7 @@
               />
             </v-btn>
           </div>
-          <div class="dropdown-item bg-transparent mt-1">
-            <v-btn
-              text
-              class="pl-0"
-              @mouseenter="dimpic"
-              @mouseleave="undimpic"
-              ripple
-              large
-              height="100px"
-              @click="ScrapeWeb"
-            >
-              <img
-                class="pl-2 pr-2"
-                src="../logo/Tommy_hilfig_vectorlogo.svg"
-                name="tommy"
-                width="200"
-              />
-            </v-btn>
-          </div>
+      
         </div>
       </span>
       <span class="nav-item dropdown ml-5">
@@ -471,7 +452,7 @@
               <img
                 class="pl-2 pr-2"
                 src="../logo/Elaraby-group-logo.png"
-                name="elaraby"
+                name="elarabygroup"
                 width="200"
               />
             </v-btn>
@@ -584,26 +565,7 @@
               />
             </v-btn>
           </div>
-          <div class="dropdown-item bg-transparent mt-1">
-            <v-btn
-              color="#164e87"
-              text
-              class="dropdown-item"
-              @mouseenter="dimpic"
-              @mouseleave="undimpic"
-              ripple
-              large
-              height="100px"
-              @click="ScrapeWeb"
-            >
-              <img
-                class="pl-2 pr-2"
-                src="../logo/vichy.png"
-                name="vichy"
-                width="200"
-              />
-            </v-btn>
-          </div>
+    
           <div class="dropdown-item bg-transparent mt-1">
             <v-btn
               color="#164e87"
@@ -677,25 +639,7 @@
             </v-btn>
           </div>
       
-          <div class="dropdown-item bg-transparent mt-1">
-            <v-btn
-              text
-              class="dropdown-item"
-              @mouseenter="dimpic"
-              @mouseleave="undimpic"
-              ripple
-              large
-              height="100px"
-              @click="ScrapeWeb"
-            >
-              <img
-                class="pl-2 pr-2"
-                src="../logo/ashley.png"
-                name="ashley"
-                width="200"
-              />
-            </v-btn>
-          </div>
+     
         </div>
       </span>
       <span class="nav-item dropdown ml-5">
@@ -1043,8 +987,8 @@ export default {
               "Success",
               "success"
             );
-            api.deletetoken();
-            this.$router.push("/");
+            api.deletetoken().then(()=>{localStorage.removeItem('user-info'); this.$router.push("/");});
+           
           })
           .catch((err) => {
             this.$loading(false);

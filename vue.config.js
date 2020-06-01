@@ -36,7 +36,13 @@ module.exports = {
         "target": "http://localhost:5000",
         pathRewrite:{
           '/home/account/changed-pass':'/account/changed-pass'
-        }
+        },
+      },
+        "/home/find": {
+          "target": "http://localhost:5000",
+          pathRewrite:{
+            '/home/find':'/find'
+          }
       },
 
       
