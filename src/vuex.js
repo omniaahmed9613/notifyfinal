@@ -11,7 +11,9 @@ const store = new Vuex.Store({
   state: {
     user: null,
     newEmail: null,
-    chosenwebsite: null
+    chosenwebsite: null,
+    ProductsTracked:[],
+    Notifications:[]
   },
   mutations: {
     setEmail(state, email) {

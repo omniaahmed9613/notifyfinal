@@ -39,4 +39,38 @@ export default {
   scrapeweb(info) {
     return axios.post("find", info);
   },
+  scheduleTask(info){
+    return axios.post("find/schedule",info)
+  },
+  scheduleCurrency(info){
+    return axios.post("find/schedule-currency",info)
+  },
+  scheduleMetals(info){
+    return axios.post("find/schedule-metals",info)
+  },
+  getProductTracks(email){
+    return axios.get(`find/getall/${email}`);
+  },
+  getCurrencyTracks(email){
+    return axios.get(`find/getallcurr/${email}`);
+  },
+  getMetalTracks(email){
+    return axios.get(`find/getallmetals/${email}`);
+  },
+  stopTrackingProduct(pid){
+    return axios.delete(`find/delete/${pid}`);
+  },
+  searchforWebsite(websitebySearch)
+  {
+    return axios.get(`find/website/${websitebySearch}`);
+  },
+  CurrencyQuery(Have,Want){
+    return axios.post(`find/currency?Have=${Have}&Want=${Want}`);
+  },
+  MetalsQuery(info){
+    return axios.post('find/metals',info);
+  },
+  Notifications(email){
+    return axios.get(`find/getmessages/${email}`);
+  }
 };

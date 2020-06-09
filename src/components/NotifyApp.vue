@@ -15,28 +15,12 @@
           hide-details="auto"
         ></v-text-field>
 
-        <v-switch
-          v-model="anypricedrop"
-          class="mx-2 mt-5"
-          color="#164e87"
-          label="Email me when the price drops"
-          :disabled="specificpricedrop"
-        ></v-switch>
-        <v-switch
-          v-model="specificpricedrop"
-          class="mx-2 mt-5"
-          color="#164e87"
-          :disabled="anypricedrop"
-          label="Email me only when the price drops below"
-          ref="spd"
-        ></v-switch>
-
         <v-btn
           type="submit"
-          class="white--text"
+          class="white--text mt-5"
           color="#164e87"
           :loading="loading"
-          >Scrape now</v-btn
+          >Find</v-btn
         >
       </form>
     </div>
@@ -61,12 +45,12 @@ export default {
   },
   methods: {
     submitInfo() {
-      this.loading = true;
       let info = {
         link: this.link,
       };
       if (!this.link)
         return this.$alert("Please enter a link to find...", null, "error");
+
       if (!this.link.includes(`${this.$store.getters.website.websitename}`))
         return this.$alert(
           `Entered link must be from ${this.$store.getters.website.websitename
@@ -75,27 +59,41 @@ export default {
           null,
           "error"
         );
-
+      this.loading = true;
       api
         .scrapeweb(info)
-        .then(() => {
+        .then((response) => {
+          const data = response.data;
           this.loading = false;
           this.$fire({
-            title: "<strong>HTML <u>example</u></strong>",
-            icon: "info",
-            html:
-              "You can use <b>bold text</b>, " +
-              '<a href="//sweetalert2.github.io">links</a> ' +
-              "and other HTML tags",
-            showCloseButton: true,
+            title: "<strong>Product info</strong>",
+            width: 900,
+            html: `<img src=${data.ImgSrc} style="width:100px"/> <b>${data.name}</b><br>
+                <b>Price</b> ${data.price}${data.currency}`,
+
             showCancelButton: true,
             focusConfirm: false,
-            confirmButtonText: '<i class="fa fa-thumbs-up"></i> Great!',
-            confirmButtonAriaLabel: "Proceed",
-            cancelButtonText: "Cancel",
+            confirmButtonText: "Proceed",
+            cancelButtonText: "Not what your looking for?",
+          }).then((promiseres) => {
+            if (promiseres.value) {
+              this.$router.push({
+                name: "options",
+                params: {
+                  price: data.price,
+                  name: data.name,
+                  image: data.ImgSrc,
+                  currency: data.currency,
+                  link: this.link,
+                },
+              });
+            }
           });
         })
-        .catch(() => {});
+        .catch((err) => {
+          this.loading = false;
+          this.$alert(err.response.data, "Error", "error");
+        });
     },
   },
 };

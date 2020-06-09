@@ -38,7 +38,7 @@
       </div>
       <div class="col-sm-4"></div>
     </div>
-    <div class="fixed-bottom white--text text-center mb-5">@ 2020 Notify.com</div>
+    <div style="color:#164e87" class="fixed-bottom  text-center mb-5">@{{new Date().getFullYear()}} Notify.com</div>
   </div>
 
 </template>

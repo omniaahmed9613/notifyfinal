@@ -8,7 +8,14 @@ import Toasted from "vue-toasted";
 import Vue from "vue";
 import NotifyApp from "./components/NotifyApp.vue";
 import UserHome from "./components/UserHome.vue";
+import NotifyOptions from './components/NotifyOptions.vue'
+import Currency from './components/Currency.vue';
+import Metals from './components/Metals.vue'
 Vue.use(Toasted, { duration: 2000 });
+const originalPush = VueRouter.prototype.push;
+VueRouter.prototype.push = function push(location) {
+  return originalPush.call(this, location).catch(err => err);
+}
 const beforeEnterCheck = (to, from, next) => {
   api
     .checktoken()
@@ -31,6 +38,12 @@ const beforeEnterLogin = async(to, from, next) => {
       next();
     });
 };
+const beforeEnteroptions=async(to,from,next)=>{
+  if(to.params.price) return next();
+  next('/home/main')
+  
+}
+
 const router = new VueRouter({
   mode: "history",
   routes: [
@@ -46,11 +59,30 @@ const router = new VueRouter({
           
         },
         {
+          path: "options",
+          name: "options",
+          component: NotifyOptions,
+          beforeEnter:beforeEnteroptions,
+       
+          
+          
+        },
+        {
+          path:"currency",
+          name:"currency",
+          component:Currency,
+        },
+        {
+          path:"metals",
+          name:"metals",
+          component:Metals,
+        },
+        {
           path: "",
           name:"",
           component: UserHome,
          
-        }
+        },
       ]
     },
     { path: "/confirmation", component: confirmation },
