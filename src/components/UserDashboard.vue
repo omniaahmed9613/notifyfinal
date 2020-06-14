@@ -1028,19 +1028,14 @@ export default {
         if (txtarea.length == 0)
           return this.$alert("Kindlly Enter Your Message", "Error", "error");
         this.$loading(true);
-        console.log( txtarea,
-            this.$store.getters.userName,
-            this.$store.getters.userEmail)
-        //L7D HENA W MSH BYKML
-        let a7a={
+        let obj={
          z : txtarea,
          x :this.$store.getters.userName,
          y:this.$store.getters.userEmail
         }
         api
-          .reportabug(a7a)
-          .then(() => {
-            
+          .reportabug(obj)
+          .then(() => {            
             this.$loading(false);
           });
       });
