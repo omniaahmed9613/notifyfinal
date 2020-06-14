@@ -98,6 +98,15 @@ module.exports = {
           "/home/find": "/find",
         },
       },
+      "/home/admin/morefeatures":{
+        target:"http://localhost:5000",
+        pathRewrite:{
+          "home/admin/morefeatures":"/admin/morefeatures"
+        },
+      },
+      "admin/reportabug":{
+        target:"http://localhost:5000",
+      },
     },
   },
   transpileDependencies: ["vuetify"],

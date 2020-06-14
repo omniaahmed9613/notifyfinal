@@ -72,5 +72,12 @@ export default {
   },
   Notifications(email){
     return axios.get(`find/getmessages/${email}`);
+  },
+  MoreFeatures(msg,rating,email,name){
+    return axios.post(`admin/morefeatures?msg=${msg}&rating=${rating}&email=${email}&name=${name}`);
+  },
+  reportabug(x){
+   // return axios.post(`admin/reportabug?txtarea=${txtarea}&name=${name}&email=${email}`,null);
+   return axios.post('admin/reportabug',x)
   }
 };

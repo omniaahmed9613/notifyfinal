@@ -1,16 +1,8 @@
 <template>
-  <div
-    class="container-fluid pl-0 pr-0"
-    style="background-color:#F0F0F0;height:100%;"
-  >
+  <div class="container-fluid pl-0 pr-0" style="background-color:#F0F0F0;height:100%;">
     <nav class="navbar navbar-expand-sm" style="background-color: #164e87;">
       <a class="navbar-brand" href="/home">
-        <img
-          class="img-fluid"
-          src="../logo/whitelogo.png"
-          alt="Notify"
-          style="height:50px;"
-        />
+        <img class="img-fluid" src="../logo/whitelogo.png" alt="Notify" style="height:50px;" />
       </a>
       <button
         class="navbar-toggler"
@@ -26,22 +18,22 @@
       <div class="collapse navbar-collapse mr-5">
         <ul class="navbar-nav mr-5">
           <li class="nav-item">
-            <v-btn color="white" text class="nav-link" href="/home/">
-              Home
-            </v-btn>
+            <v-btn color="white" text class="nav-link" href="/home/">Home</v-btn>
           </li>
           <li class="nav-item">
             <v-btn color="white" text class="nav-link" @click="OpenFeature">Features</v-btn>
           </li>
           <li class="nav-item">
-            <v-btn color="white" text class="nav-link" href="#"
-              >Want more feautures?</v-btn
-            >
+            <v-btn
+              color="white"
+              text
+              class="nav-link"
+              href="#"
+              @click="morefeatures"
+            >Want more feautures?</v-btn>
           </li>
           <li class="nav-item">
-            <v-btn color="white" text class="nav-link" href="#"
-              >Report a Bug</v-btn
-            >
+            <v-btn color="white" text class="nav-link" href="#" @click="reportabug">Report a Bug</v-btn>
           </li>
         </ul>
         <v-menu offset-y auto light>
@@ -57,10 +49,7 @@
             ></v-text-field>
           </template>
           <v-list>
-            <v-list-item
-              v-for="website in this.websitesbySearch"
-              :key="website._id.$oid"
-            >
+            <v-list-item v-for="website in this.websitesbySearch" :key="website._id.$oid">
               <v-btn
                 text
                 @mouseenter="dimpic"
@@ -86,21 +75,12 @@
         <v-menu offset-y>
           <template v-slot:activator="{ on }">
             <v-btn icon color="white" class="mr-2" v-on="on">
-              <v-icon>
-                mdi mdi-bell</v-icon>
+              <v-icon>mdi mdi-bell</v-icon>
             </v-btn>
           </template>
           <v-list>
-            <v-list-item
-              v-for="product in this.$store.state.ProductsTracked"
-              :key="product._id"
-            >
-              <img
-                :src="product.product_image"
-                style="width:50px"
-                alt=""
-                class="mr-2"
-              />
+            <v-list-item v-for="product in this.$store.state.ProductsTracked" :key="product._id">
+              <img :src="product.product_image" style="width:50px" alt class="mr-2" />
               <v-list-item-title>{{ product.product_name }}</v-list-item-title>
 
               <v-btn
@@ -118,10 +98,7 @@
         </v-menu>
 
         <v-avatar size="48">
-          <img
-            class="img-fluid ml-auto"
-            :src="`${this.$store.getters.userImage}`"
-          />
+          <img class="img-fluid ml-auto" :src="`${this.$store.getters.userImage}`" />
         </v-avatar>
 
         <div class="nav-item dropdown mr-5">
@@ -135,20 +112,10 @@
             data-toggle="dropdown"
             aria-haspopup="true"
             aria-expanded="false"
-            >{{ this.$store.getters.userName }}</v-btn
-          >
+          >{{ this.$store.getters.userName }}</v-btn>
           <input type="file" ref="file" style="display: none" @change="file" />
-          <div
-            class="dropdown-menu"
-            id="account"
-            aria-labelledby="navbarDropdown"
-          >
-            <v-btn
-              color="#164e87"
-              text
-              class="dropdown-item"
-              @click="changepicture"
-            >
+          <div class="dropdown-menu" id="account" aria-labelledby="navbarDropdown">
+            <v-btn color="#164e87" text class="dropdown-item" @click="changepicture">
               Change Avatar
               <span class="mdi mdi-image"></span>
             </v-btn>
@@ -157,13 +124,7 @@
               <span class="mdi mdi-key-variant"></span>
             </v-btn>
             <div class="dropdown-divider"></div>
-            <v-btn
-              color="#164e87"
-              class="dropdown-item"
-              text
-              @click="logout"
-              href="#"
-            >
+            <v-btn color="#164e87" class="dropdown-item" text @click="logout" href="#">
               Sign Out
               <span class="mdi mdi-logout"></span>
             </v-btn>
@@ -187,10 +148,13 @@
         <span style="color:#164e87">All Categories</span>
       </button>
 
-      
       <ul class="collapse navbar-collapse cats ml-5">
-        <li class="nav-item hidden-sm-and-down"><span style="color:#164e87"><b>All Categories</b></span></li>
-        
+        <li class="nav-item hidden-sm-and-down">
+          <span style="color:#164e87">
+            <b>All Categories</b>
+          </span>
+        </li>
+
         <li class="nav-item dropdown ml-5">
           <v-btn
             color="#164e87"
@@ -202,8 +166,7 @@
             data-toggle="dropdown"
             aria-haspopup="true"
             aria-expanded="false"
-            >ECommerce</v-btn
-          >
+          >ECommerce</v-btn>
           <div
             class="dropdown-menu"
             id="homeandapp"
@@ -220,12 +183,7 @@
                 height="100px"
                 @click="ScrapeWeb"
               >
-                <img
-                  class="pl-2 pr-2"
-                  src="../logo/Amazon_logo.svg"
-                  name="amazon"
-                  width="200"
-                />
+                <img class="pl-2 pr-2" src="../logo/Amazon_logo.svg" name="amazon" width="200" />
               </v-btn>
             </div>
             <div class="dropdown-item bg-transparent mt-1">
@@ -280,12 +238,7 @@
                 height="100px"
                 @click="ScrapeWeb"
               >
-                <img
-                  class="pl-2 pr-2"
-                  src="../logo/olx.png"
-                  name="olx"
-                  width="200"
-                />
+                <img class="pl-2 pr-2" src="../logo/olx.png" name="olx" width="200" />
               </v-btn>
             </div>
           </div>
@@ -300,8 +253,7 @@
             data-toggle="dropdown"
             aria-haspopup="true"
             aria-expanded="false"
-            >clothing</v-btn
-          >
+          >clothing</v-btn>
           <div
             class="dropdown-menu pl-2 pr-2"
             style="width:600px"
@@ -319,12 +271,7 @@
                 height="100px"
                 @click="ScrapeWeb"
               >
-                <img
-                  src="../logo/Zara_Logo.svg"
-                  width="200"
-                  name="zara"
-                  height="100px"
-                />
+                <img src="../logo/Zara_Logo.svg" width="200" name="zara" height="100px" />
               </v-btn>
               <v-btn
                 text
@@ -386,12 +333,7 @@
                 height="100px"
                 @click="ScrapeWeb"
               >
-                <img
-                  class="pl-2 pr-2"
-                  src="../logo/Bershka_logo.svg"
-                  name="bershka"
-                  width="200"
-                />
+                <img class="pl-2 pr-2" src="../logo/Bershka_logo.svg" name="bershka" width="200" />
               </v-btn>
               <v-btn
                 class="mb-5"
@@ -422,13 +364,8 @@
             data-toggle="dropdown"
             aria-haspopup="true"
             aria-expanded="false"
-            >sports</v-btn
-          >
-          <div
-            class="dropdown-menu"
-            id="homeandapp"
-            aria-labelledby="navbarDropdown"
-          >
+          >sports</v-btn>
+          <div class="dropdown-menu" id="homeandapp" aria-labelledby="navbarDropdown">
             <div class="dropdown-item bg-transparent">
               <v-btn
                 text
@@ -458,12 +395,7 @@
                 height="100px"
                 @click="ScrapeWeb"
               >
-                <img
-                  class="pl-2 pr-2 pt-2"
-                  src="../logo/nike.png"
-                  name="nike"
-                  width="200"
-                />
+                <img class="pl-2 pr-2 pt-2" src="../logo/nike.png" name="nike" width="200" />
               </v-btn>
             </div>
             <div class="dropdown-item bg-transparent mt-3">
@@ -476,12 +408,7 @@
                 height="100px"
                 @click="ScrapeWeb"
               >
-                <img
-                  class="pl-2 pr-2"
-                  src="../logo/puma.png"
-                  name="puma"
-                  width="200"
-                />
+                <img class="pl-2 pr-2" src="../logo/puma.png" name="puma" width="200" />
               </v-btn>
             </div>
             <div class="dropdown-item bg-transparent mt-3">
@@ -494,12 +421,7 @@
                 height="100px"
                 @click="ScrapeWeb"
               >
-                <img
-                  src="../logo/reebook.png"
-                  class="pl-2 pr-2"
-                  name="reebok"
-                  width="200"
-                />
+                <img src="../logo/reebook.png" class="pl-2 pr-2" name="reebok" width="200" />
               </v-btn>
             </div>
           </div>
@@ -513,13 +435,8 @@
             data-toggle="dropdown"
             aria-haspopup="true"
             aria-expanded="false"
-            >home appliances</v-btn
-          >
-          <div
-            class="dropdown-menu "
-            id="homeandapp"
-            aria-labelledby="navbarDropdown"
-          >
+          >home appliances</v-btn>
+          <div class="dropdown-menu" id="homeandapp" aria-labelledby="navbarDropdown">
             <div class="dropdown-item bg-transparent">
               <v-btn
                 text
@@ -548,12 +465,7 @@
                 height="100px"
                 @click="ScrapeWeb"
               >
-                <img
-                  class="pl-2 pr-2"
-                  src="../logo/b-tech.png"
-                  name="btech"
-                  width="200"
-                />
+                <img class="pl-2 pr-2" src="../logo/b-tech.png" name="btech" width="200" />
               </v-btn>
             </div>
 
@@ -581,13 +493,8 @@
             data-toggle="dropdown"
             aria-haspopup="true"
             aria-expanded="false"
-            >health & beauty</v-btn
-          >
-          <div
-            class="dropdown-menu"
-            id="homeandapp"
-            aria-labelledby="navbarDropdown"
-          >
+          >health & beauty</v-btn>
+          <div class="dropdown-menu" id="homeandapp" aria-labelledby="navbarDropdown">
             <div class="dropdown-item bg-transparent">
               <v-btn
                 text
@@ -619,11 +526,7 @@
                 height="100px"
                 @click="ScrapeWeb"
               >
-                <img
-                  src="../logo/hude-beauty.png"
-                  name="hudabeauty"
-                  width="200"
-                />
+                <img src="../logo/hude-beauty.png" name="hudabeauty" width="200" />
               </v-btn>
             </div>
             <div class="dropdown-item bg-transparent mt-1">
@@ -638,12 +541,7 @@
                 height="100px"
                 @click="ScrapeWeb"
               >
-                <img
-                  class="pl-2 pr-2"
-                  src="../logo/sephora.png"
-                  name="sephora"
-                  width="200"
-                />
+                <img class="pl-2 pr-2" src="../logo/sephora.png" name="sephora" width="200" />
               </v-btn>
             </div>
 
@@ -659,11 +557,7 @@
                 height="100px"
                 @click="ScrapeWeb"
               >
-                <img
-                  src="../logo/Anastasia_Beverly_Hills_logo.png"
-                  name="anastasia"
-                  width="200"
-                />
+                <img src="../logo/Anastasia_Beverly_Hills_logo.png" name="anastasia" width="200" />
               </v-btn>
             </div>
           </div>
@@ -677,13 +571,8 @@
             data-toggle="dropdown"
             aria-haspopup="true"
             aria-expanded="false"
-            >furniture</v-btn
-          >
-          <div
-            class="dropdown-menu"
-            id="homeandapp"
-            aria-labelledby="navbarDropdown"
-          >
+          >furniture</v-btn>
+          <div class="dropdown-menu" id="homeandapp" aria-labelledby="navbarDropdown">
             <div class="dropdown-item bg-transparent mt-1">
               <v-btn
                 color="#164e87"
@@ -710,12 +599,7 @@
                 height="100px"
                 @click="ScrapeWeb"
               >
-                <img
-                  class="pl-2 pr-2"
-                  src="../logo/inout.png"
-                  name="inandoutfurniture"
-                  width="200"
-                />
+                <img class="pl-2 pr-2" src="../logo/inout.png" name="inandoutfurniture" width="200" />
               </v-btn>
             </div>
           </div>
@@ -729,13 +613,8 @@
             data-toggle="dropdown"
             aria-haspopup="true"
             aria-expanded="false"
-            >watches and jewelry</v-btn
-          >
-          <div
-            class="dropdown-menu"
-            id="homeandapp"
-            aria-labelledby="navbarDropdown"
-          >
+          >watches and jewelry</v-btn>
+          <div class="dropdown-menu" id="homeandapp" aria-labelledby="navbarDropdown">
             <div class="dropdown-item bg-transparent">
               <v-btn
                 text
@@ -786,7 +665,7 @@
               >
                 <img src="../logo/i-watch.png" width="200" name="i-watch" />
               </v-btn>
-            </div> -->
+            </div>-->
             <div class="dropdown-item bg-transparent mt-1">
               <v-btn
                 color="#164e87"
@@ -798,12 +677,7 @@
                 height="100px"
                 @click="ScrapeWeb"
               >
-                <img
-                  class="pl-2 pr-2"
-                  src="../logo/azzam_logo_tung.png"
-                  name="azzam"
-                  width="200"
-                />
+                <img class="pl-2 pr-2" src="../logo/azzam_logo_tung.png" name="azzam" width="200" />
               </v-btn>
             </div>
           </div>
@@ -817,13 +691,8 @@
             data-toggle="dropdown"
             aria-haspopup="true"
             aria-expanded="false"
-            >currency</v-btn
-          >
-          <div
-            class="dropdown-menu"
-            id="homeandapp"
-            aria-labelledby="navbarDropdown"
-          >
+          >currency</v-btn>
+          <div class="dropdown-menu" id="homeandapp" aria-labelledby="navbarDropdown">
             <div class="dropdown-item bg-transparent">
               <v-btn
                 text
@@ -834,12 +703,7 @@
                 height="200px"
                 @click="ScrapeWeb"
               >
-                <img
-                  src="../logo/currency.png"
-                  width="200"
-                  height="200px"
-                  name="currency"
-                />
+                <img src="../logo/currency.png" width="200" height="200px" name="currency" />
               </v-btn>
             </div>
           </div>
@@ -853,14 +717,9 @@
             data-toggle="dropdown"
             aria-haspopup="true"
             aria-expanded="false"
-            >precious metals</v-btn
-          >
+          >precious metals</v-btn>
 
-          <div
-            class="dropdown-menu"
-            id="homeandapp"
-            aria-labelledby="navbarDropdown"
-          >
+          <div class="dropdown-menu" id="homeandapp" aria-labelledby="navbarDropdown">
             <div class="dropdown-item bg-transparent">
               <v-btn
                 text
@@ -903,25 +762,23 @@
         color="#164e87"
       >
         <v-card-text>
-          <v-btn
-            v-for="icon in icons"
-            :key="icon"
-            class="mx-4 white--text"
-            icon
-          >
+          <v-btn v-for="icon in icons" :key="icon" class="mx-4 white--text" icon>
             <v-icon size="24px">{{ icon }}</v-icon>
           </v-btn>
         </v-card-text>
         <v-card-text class="white--text">
           This project aims specifically at allowing user to be notified when a
-          current product on a specific website has a price reduction <br />thus
+          current product on a specific website has a price reduction
+          <br />thus
           allowing the users to purchase the product at the specific price he
-          wants.<br />
+          wants.
+          <br />
         </v-card-text>
         <v-divider></v-divider>
 
         <v-card-text class="white--text">
-          {{ new Date().getFullYear() }} — <strong>Notify</strong>
+          {{ new Date().getFullYear() }} —
+          <strong>Notify</strong>
         </v-card-text>
       </v-card>
     </div>
@@ -932,6 +789,7 @@ import _ from "lodash";
 import websites from "../websites";
 import api from "../api";
 import getalltrackings from "../getalltrackings";
+// import router from "../router.js"
 export default {
   data() {
     return {
@@ -939,17 +797,17 @@ export default {
       website: null,
       websitebySearch: null,
       websitesbySearch: [],
-      icons: ["mdi-facebook", "mdi-twitter", "mdi-linkedin", "mdi-instagram"],
+      icons: ["mdi-facebook", "mdi-twitter", "mdi-linkedin", "mdi-instagram"]
     };
   },
   methods: {
-    OpenFeature(){
-this.$fire({
-  title: '<strong style="color:white">What features do we offer?</strong>',
-   width: 900,
-   background:"#164e87",
-  html:
-    `<div style="color:white;"class="ml-3" >
+    OpenFeature() {
+      this.$fire({
+        title:
+          '<strong style="color:white">What features do we offer?</strong>',
+        width: 900,
+        background: "#164e87",
+        html: `<div style="color:white;"class="ml-3" >
     <ul>
     <li class="mt-3 text-sm-left" >Tracking products has never been easier, with just a link of the product you can track its price.</li>
     <li class="mt-3 text-sm-left" >Abillity to track other items such as precious metals and currencies of all sort.</li>
@@ -959,20 +817,20 @@ this.$fire({
     </ul>
     </div>
    `,
-  showCancelButton: true,
-  focusConfirm: false,
-})
+        showCancelButton: true,
+        focusConfirm: false
+      });
     },
     checkForNotifs() {
       api
         .Notifications(this.$store.getters.userEmail)
-        .then((res) => {
+        .then(res => {
           if (res) {
             this.$store.state.Notifications = [];
             this.$store.state.Notifications = res.data;
           }
         })
-        .catch((err) => {
+        .catch(err => {
           this.$store.state.Notifications = err.response.data;
         });
     },
@@ -980,7 +838,7 @@ this.$fire({
       return require("../logo/" + logo);
     },
     SearchforInput() {
-      this.websitesbySearch = _.filter(websites, (val) =>
+      this.websitesbySearch = _.filter(websites, val =>
         _.includes(
           val.website_name?.toLowerCase(),
           this.websitebySearch?.toLowerCase()
@@ -996,7 +854,7 @@ this.$fire({
             .then(() => {
               this.$store.state.ProductsTracked = _.filter(
                 this.$store.state.ProductsTracked,
-                (product) => product._id != pid
+                product => product._id != pid
               );
 
               this.$loading(false);
@@ -1018,23 +876,23 @@ this.$fire({
       }
       let info = {
         websitename: this.website.name,
-        websitesrc: this.website.src,
+        websitesrc: this.website.src
       };
       this.$store.commit("assignwebsite", info);
       if (this.website.name == "currency") {
-        this.$router.push({ name: "currency" }).catch((error) => {
+        this.$router.push({ name: "currency" }).catch(error => {
           if (error.name != "NavigationDuplicated") {
             throw error;
           }
         });
       } else if (this.website.name == "XAU" || this.website.name == "XAG") {
-        this.$router.push({ name: "metals" }).catch((error) => {
+        this.$router.push({ name: "metals" }).catch(error => {
           if (error.name != "NavigationDuplicated") {
             throw error;
           }
         });
       } else {
-        this.$router.push({ name: "main" }).catch((error) => {
+        this.$router.push({ name: "main" }).catch(error => {
           if (error.name != "NavigationDuplicated") {
             throw error;
           }
@@ -1060,7 +918,7 @@ this.$fire({
       this.$loading(true);
       api
         .changepicture(frm)
-        .then((res) => {
+        .then(res => {
           this.$loading(false);
           this.$store.commit("assignpicture", res.data);
           this.$alert("Profile Picture has been changed", null, "success");
@@ -1094,10 +952,10 @@ this.$fire({
           return [
             document.getElementById("oldpw").value,
             document.getElementById("password").value,
-            document.getElementById("confirmpassword").value,
+            document.getElementById("confirmpassword").value
           ];
-        },
-      }).then((results) => {
+        }
+      }).then(results => {
         const oldpw = results.value[0];
         const password = results.value[1];
         const confirmpassword = results.value[2];
@@ -1125,11 +983,11 @@ this.$fire({
         let user = {
           oldpw: oldpw,
           email: this.$store.getters.userEmail,
-          password: password,
+          password: password
         };
         api
           .userChangesPw(user)
-          .then((res) => {
+          .then(res => {
             this.$loading(false);
             this.$alert(
               `${res.data}, Log in to continue`,
@@ -1141,7 +999,7 @@ this.$fire({
               this.$router.push("/");
             });
           })
-          .catch((err) => {
+          .catch(err => {
             this.$loading(false);
             this.$alert(err.response.data, "Error", "error");
           });
@@ -1150,24 +1008,60 @@ this.$fire({
     changepicture() {
       this.$refs.file.click();
     },
+    morefeatures() {
+      this.$router.push({ name: "morefeatures" });
+    },
+    reportabug() {
+      this.$fire({
+        title: "Report A Bug",
+        html: `
+           <textarea id="txtarea"  rows="4" cols="50">
+            </textarea>`,
+        focusConfirm: false,
+        showCancelButton: true,
+        confirmButtonText: "Send",
+        preConfirm: () => {
+          return [document.getElementById("txtarea").value];
+        }
+      }).then(results => {
+        const txtarea = results.value[0];
+        if (txtarea.length == 0)
+          return this.$alert("Kindlly Enter Your Message", "Error", "error");
+        this.$loading(true);
+        console.log( txtarea,
+            this.$store.getters.userName,
+            this.$store.getters.userEmail)
+        //L7D HENA W MSH BYKML
+        let a7a={
+         z : txtarea,
+         x :this.$store.getters.userName,
+         y:this.$store.getters.userEmail
+        }
+        api
+          .reportabug(a7a)
+          .then(() => {
+            
+            this.$loading(false);
+          });
+      });
+    }
   },
   created() {
     this.$store.state.ProductsTracked = [];
-
     api
       .getlocation()
-      .then((res) => {
+      .then(res => {
         this.country = res.data.countryCode;
       })
-      .catch((err) => {
+      .catch(err => {
         console.log(err);
       });
-
     getalltrackings(this.$store.getters.userEmail);
-  },
+  }
 };
 </script>
 <style scoped>
 ul {
-    list-style-type: none;
-}</style>
+  list-style-type: none;
+}
+</style>

@@ -7,7 +7,8 @@ import Toasted from 'vue-toasted';
 import VueSimpleAlert from "vue-simple-alert";
 import store from './vuex'
 import vuetify from './plugins/vuetify';
-import CountryFlag from 'vue-country-flag'
+import CountryFlag from 'vue-country-flag';
+import Rate from 'vue-rate';
  
 Vue.component('country-flag', CountryFlag)
 Vue.use(VueSimpleAlert);
@@ -22,5 +23,6 @@ new Vue({
   router:router,
   store:store,
   vuetify,
+  Rate,
   render: h => h(App)
 }).$mount('#app')
